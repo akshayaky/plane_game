@@ -37,6 +37,11 @@ public class Entity : MonoBehaviour
         timeRemaining = damage * 0.2f;
     }
 
+    public void DamagePercent(float percent)
+    {
+        Damage(maxHealth * (percent/100));
+    }
+
     void Update()
     {
         if(m_SpriteRenderer.color == m_NewColor)

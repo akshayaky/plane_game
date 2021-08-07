@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 public class playerAnim : MonoBehaviour
 {
     public Animator animator;
@@ -8,7 +9,7 @@ public class playerAnim : MonoBehaviour
     public Rigidbody2D rb;
     
     private Entity plane;
-    
+    private float prevSpeed = -1f;
     void Start()
     {
         plane = gb.GetComponent<Entity>();
@@ -18,10 +19,10 @@ public class playerAnim : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         Entity target = col.gameObject.GetComponent<Entity>();
+        float speed = (rb.velocity.magnitude/15) * 100;
         if(target != null)
         {
-            Debug.Log("Here");
-            float speed = (rb.velocity.magnitude/15) * 100;
+
             float damage = 0;
             if (col.tag.Contains("target"))
             {
@@ -51,8 +52,11 @@ public class playerAnim : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(gameObject.name);
+                    // Debug.Log(gameObject.name);
                 }
+
+                
+                prevSpeed = speed;
                 if (col.gameObject.CompareTag("target"))
                 {
                     if(damage != 0)
@@ -70,13 +74,27 @@ public class playerAnim : MonoBehaviour
 
             }
         }
+        if(Math.Abs(prevSpeed - speed) < 1)
+        {
+            Debug.Log(";;;;;;;;;");
+        }
+        // Debug.Log(speed);
+
         // else
         // {
         //     Debug.Log("There");
         // }
                
     }
-
+    void OnTriggerStay2D(Collider2D col)
+    {
+        Entity target = col.gameObject.GetComponent<Entity>();
+        if(target != null && gameObject.name != "plane")
+        {
+            // Debug.Log(gameObject.name);
+            plane.DamagePercent(0.3f);
+        }
+    }
     // void Update()
     // {
     //     if(m_SpriteRenderer.color == m_NewColor)
