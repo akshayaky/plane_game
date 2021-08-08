@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 1216958076}
   - component: {fileID: 1216958075}
   m_Layer: 0
-  m_Name: back
+  m_Name: back1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5250,7 +5250,7 @@ Animator:
   m_GameObject: {fileID: 2313252096407751099}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e6b73abfad38b2a4098baa42c5d53c1b, type: 2}
+  m_Controller: {fileID: 9100000, guid: e786e86ff6be960428304e449f0bcd1d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5271,7 +5271,7 @@ GameObject:
   - component: {fileID: 2470211488557277979}
   - component: {fileID: 8030562094755411954}
   m_Layer: 0
-  m_Name: backDupe
+  m_Name: back
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5644,12 +5644,17 @@ PrefabInstance:
     - target: {fileID: 3117548567684994152, guid: e8f5a4d196f529c48a09a3d01e3db876,
         type: 3}
       propertyPath: health
-      value: 10
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3117548567684994152, guid: e8f5a4d196f529c48a09a3d01e3db876,
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117548567684994152, guid: e8f5a4d196f529c48a09a3d01e3db876,
+        type: 3}
+      propertyPath: maxHealth
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3117548567684994152, guid: e8f5a4d196f529c48a09a3d01e3db876,
         type: 3}

@@ -45,9 +45,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 3.1845336}
+  m_Offset: {x: 0, y: -0.33281207}
   serializedVersion: 2
-  m_Radius: 5.0705185
+  m_Radius: 8.197048
 --- !u!114 &7180761478411830065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5002,6 +5002,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   health: 1
-  m_NewColor: {r: 1, g: 0, b: 0, a: 1}
+  m_NewColor: {r: 1, g: 1, b: 1, a: 1}
   m_OldColor: {r: 1, g: 1, b: 1, a: 1}
   m_SpriteRenderer: {fileID: 2721644935878513292}
