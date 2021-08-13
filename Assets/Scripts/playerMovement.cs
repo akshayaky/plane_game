@@ -7,31 +7,59 @@ public class playerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float speed = 1f;
+    public float tilt = 0f;
 
     private float speedLimit = 15f;
     private float speedBoostTime = 1f;
     private float timeRemaining;
     private  SpriteRenderer m_SpriteRenderer;
+
+    public PlayerController playerControl;
+
     void Start()
     {
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         // Debug.Log(m_SpriteRenderer.color.a);
         timeRemaining = speedBoostTime;
+
+        
+    }
+
+    void Awake()
+    {
+        playerControl = new PlayerController();
+        // playerControl.fly.Shoot.performed += context => SendMessage();
+    }
+
+    private void OnEnable()
+    {
+        playerControl.fly.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControl.fly.Disable();
+    }
+
+    void SendMessage()
+    {
+        Debug.Log("Shoot");
     }
 
     void FixedUpdate()
     {
-        if(Input.GetKeyDown("s") || Input.GetKeyDown("down"))
-        {
-            var temp = m_SpriteRenderer.color; 
-            temp.a = 0.7f;
-            m_SpriteRenderer.color = temp;
-            Debug.Log("Activate");
-            speedLimit = 50f;
-            speed = 5;
-        }
+        // if(Input.GetKeyDown("s") || Input.GetKeyDown("down"))
+        // {
+        //     var temp = m_SpriteRenderer.color; 
+        //     temp.a = 0.7f;
+        //     m_SpriteRenderer.color = temp;
+        //     Debug.Log("Activate");
+        //     speedLimit = 50f;
+        //     speed = 5;
+        // }
 
-        var tilt = Input.GetAxisRaw("Horizontal");
+        // float tilt = playerControl.fly.move.ReadValue<float>(); 
+        // var tilt = Input.GetAxisRaw("Horizontal");
         var rot = transform.localEulerAngles;
         rot.z -= tilt * 1.5f;
         transform.localEulerAngles = rot;

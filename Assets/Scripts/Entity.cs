@@ -23,7 +23,7 @@ public class Entity : MonoBehaviour
 
     public void Damage(float damage)
     {
-
+        Debug.Log(damage);
         health -= damage;
         if(health <= 0)
         {

@@ -74,10 +74,6 @@ public class playerAnim : MonoBehaviour
 
             }
         }
-        if(Math.Abs(prevSpeed - speed) < 1)
-        {
-            Debug.Log(";;;;;;;;;");
-        }
         // Debug.Log(speed);
 
         // else

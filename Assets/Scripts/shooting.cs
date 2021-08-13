@@ -11,20 +11,25 @@ public class shooting : MonoBehaviour
     public float fireTime = 0.1f; 
     private float nextFire = 0f;
     public int index = 0;
+
+    public bool shoot = false;
+    public bool changeAmmo = false; 
     void Update()
     {
-        if(Input.GetKeyDown("q"))
+        if(changeAmmo)
         {
             index = (index + 1 ) % projectiles.Count;
-            // Debug.Log(index);
+            changeAmmo = false;
         }
         nextFire += Time.deltaTime; 
-        if( (Input.GetButton("Fire1") || Input.GetKey("w") || Input.GetKey("up")) 
-            && nextFire >= fireTime) 
+        if( shoot && nextFire >= fireTime) 
         {
             nextFire = 0;
             Shoot();
         }
+
+
+        
         // if( (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetKeyUp("w") || Input.GetKeyUp("up")) 
         //     && nextFire >= fireTime/2) 
         // {
