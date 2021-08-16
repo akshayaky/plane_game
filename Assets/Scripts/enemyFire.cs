@@ -19,12 +19,9 @@ public class enemyFire : MonoBehaviour
  
     private Vector3 _center;
     private float _angle;
-    private float x, y;
     void Start()
     {
         _center = building.transform.position;
-        x = 0;
-        y = 0;
     }
 
     void OnTriggerStay2D(Collider2D col)

@@ -35,10 +35,42 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""speed_boost"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa733c64-792f-491a-bf05-7308c6e65877"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Change_ammo"",
                     ""type"": ""Button"",
                     ""id"": ""456444ce-008f-409c-85ae-9f9db33eb036"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Change_ammo_touch"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""f2baf56d-65d0-4bcc-ba4d-c08765f50529"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Move_touch"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""44307cde-f86a-4350-b5ef-36a6f401f7ae"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Move_touch_end"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""66080343-9d59-473b-a724-128a9d31da37"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -134,12 +166,78 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""37c54d9b-f27c-4531-ab7e-d25d2a550c2f"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mobile Phone;Computer"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""93c7503d-8e1c-447e-a3ff-1688d3fdc5b3"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Change_ammo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c940854-0ff0-40fa-8eba-47185b96fa98"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Computer;Mobile Phone"",
+                    ""action"": ""Change_ammo_touch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""073db9de-291b-477b-83f8-f4bc63720a02"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mobile Phone"",
+                    ""action"": ""Move_touch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c0b7c30-7403-405f-be51-9df72f661cd5"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position/x"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Mobile Phone"",
+                    ""action"": ""Move_touch_end"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1fb1045a-651f-432b-9430-5e69b901939a"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""speed_boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d9e41ef-aad8-4150-8e1c-f301700d1e6c"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""speed_boost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -180,7 +278,11 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_fly = asset.FindActionMap("fly", throwIfNotFound: true);
         m_fly_Move = m_fly.FindAction("Move", throwIfNotFound: true);
         m_fly_Shoot = m_fly.FindAction("Shoot", throwIfNotFound: true);
+        m_fly_speed_boost = m_fly.FindAction("speed_boost", throwIfNotFound: true);
         m_fly_Change_ammo = m_fly.FindAction("Change_ammo", throwIfNotFound: true);
+        m_fly_Change_ammo_touch = m_fly.FindAction("Change_ammo_touch", throwIfNotFound: true);
+        m_fly_Move_touch = m_fly.FindAction("Move_touch", throwIfNotFound: true);
+        m_fly_Move_touch_end = m_fly.FindAction("Move_touch_end", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -232,14 +334,22 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private IFlyActions m_FlyActionsCallbackInterface;
     private readonly InputAction m_fly_Move;
     private readonly InputAction m_fly_Shoot;
+    private readonly InputAction m_fly_speed_boost;
     private readonly InputAction m_fly_Change_ammo;
+    private readonly InputAction m_fly_Change_ammo_touch;
+    private readonly InputAction m_fly_Move_touch;
+    private readonly InputAction m_fly_Move_touch_end;
     public struct FlyActions
     {
         private @PlayerController m_Wrapper;
         public FlyActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_fly_Move;
         public InputAction @Shoot => m_Wrapper.m_fly_Shoot;
+        public InputAction @speed_boost => m_Wrapper.m_fly_speed_boost;
         public InputAction @Change_ammo => m_Wrapper.m_fly_Change_ammo;
+        public InputAction @Change_ammo_touch => m_Wrapper.m_fly_Change_ammo_touch;
+        public InputAction @Move_touch => m_Wrapper.m_fly_Move_touch;
+        public InputAction @Move_touch_end => m_Wrapper.m_fly_Move_touch_end;
         public InputActionMap Get() { return m_Wrapper.m_fly; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -255,9 +365,21 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Shoot.started -= m_Wrapper.m_FlyActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_FlyActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_FlyActionsCallbackInterface.OnShoot;
+                @speed_boost.started -= m_Wrapper.m_FlyActionsCallbackInterface.OnSpeed_boost;
+                @speed_boost.performed -= m_Wrapper.m_FlyActionsCallbackInterface.OnSpeed_boost;
+                @speed_boost.canceled -= m_Wrapper.m_FlyActionsCallbackInterface.OnSpeed_boost;
                 @Change_ammo.started -= m_Wrapper.m_FlyActionsCallbackInterface.OnChange_ammo;
                 @Change_ammo.performed -= m_Wrapper.m_FlyActionsCallbackInterface.OnChange_ammo;
                 @Change_ammo.canceled -= m_Wrapper.m_FlyActionsCallbackInterface.OnChange_ammo;
+                @Change_ammo_touch.started -= m_Wrapper.m_FlyActionsCallbackInterface.OnChange_ammo_touch;
+                @Change_ammo_touch.performed -= m_Wrapper.m_FlyActionsCallbackInterface.OnChange_ammo_touch;
+                @Change_ammo_touch.canceled -= m_Wrapper.m_FlyActionsCallbackInterface.OnChange_ammo_touch;
+                @Move_touch.started -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch;
+                @Move_touch.performed -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch;
+                @Move_touch.canceled -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch;
+                @Move_touch_end.started -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch_end;
+                @Move_touch_end.performed -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch_end;
+                @Move_touch_end.canceled -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch_end;
             }
             m_Wrapper.m_FlyActionsCallbackInterface = instance;
             if (instance != null)
@@ -268,9 +390,21 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @speed_boost.started += instance.OnSpeed_boost;
+                @speed_boost.performed += instance.OnSpeed_boost;
+                @speed_boost.canceled += instance.OnSpeed_boost;
                 @Change_ammo.started += instance.OnChange_ammo;
                 @Change_ammo.performed += instance.OnChange_ammo;
                 @Change_ammo.canceled += instance.OnChange_ammo;
+                @Change_ammo_touch.started += instance.OnChange_ammo_touch;
+                @Change_ammo_touch.performed += instance.OnChange_ammo_touch;
+                @Change_ammo_touch.canceled += instance.OnChange_ammo_touch;
+                @Move_touch.started += instance.OnMove_touch;
+                @Move_touch.performed += instance.OnMove_touch;
+                @Move_touch.canceled += instance.OnMove_touch;
+                @Move_touch_end.started += instance.OnMove_touch_end;
+                @Move_touch_end.performed += instance.OnMove_touch_end;
+                @Move_touch_end.canceled += instance.OnMove_touch_end;
             }
         }
     }
@@ -297,6 +431,10 @@ public class @PlayerController : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnSpeed_boost(InputAction.CallbackContext context);
         void OnChange_ammo(InputAction.CallbackContext context);
+        void OnChange_ammo_touch(InputAction.CallbackContext context);
+        void OnMove_touch(InputAction.CallbackContext context);
+        void OnMove_touch_end(InputAction.CallbackContext context);
     }
 }

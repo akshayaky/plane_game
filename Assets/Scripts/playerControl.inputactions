@@ -22,10 +22,42 @@
                     "interactions": ""
                 },
                 {
+                    "name": "speed_boost",
+                    "type": "Button",
+                    "id": "fa733c64-792f-491a-bf05-7308c6e65877",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Change_ammo",
                     "type": "Button",
                     "id": "456444ce-008f-409c-85ae-9f9db33eb036",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Change_ammo_touch",
+                    "type": "PassThrough",
+                    "id": "f2baf56d-65d0-4bcc-ba4d-c08765f50529",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Move_touch",
+                    "type": "PassThrough",
+                    "id": "44307cde-f86a-4350-b5ef-36a6f401f7ae",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Move_touch_end",
+                    "type": "PassThrough",
+                    "id": "66080343-9d59-473b-a724-128a9d31da37",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -121,12 +153,78 @@
                 },
                 {
                     "name": "",
+                    "id": "37c54d9b-f27c-4531-ab7e-d25d2a550c2f",
+                    "path": "<Touchscreen>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile Phone;Computer",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "93c7503d-8e1c-447e-a3ff-1688d3fdc5b3",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Change_ammo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6c940854-0ff0-40fa-8eba-47185b96fa98",
+                    "path": "<Touchscreen>/press",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Computer;Mobile Phone",
+                    "action": "Change_ammo_touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "073db9de-291b-477b-83f8-f4bc63720a02",
+                    "path": "<Touchscreen>/primaryTouch/position/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile Phone",
+                    "action": "Move_touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c0b7c30-7403-405f-be51-9df72f661cd5",
+                    "path": "<Touchscreen>/primaryTouch/position/x",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Mobile Phone",
+                    "action": "Move_touch_end",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1fb1045a-651f-432b-9430-5e69b901939a",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "speed_boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d9e41ef-aad8-4150-8e1c-f301700d1e6c",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "speed_boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

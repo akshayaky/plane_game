@@ -7,7 +7,6 @@ public class rocketDamage : MonoBehaviour
     public float ROCKET_DAMAGE = 5;
     public GameObject rocket;
     private  rocketMovement m_rocketMovement;
-    private int objectCount = 0;
     private float timeRemaining = 0.5f;
     private HashSet<int> ids;
 
