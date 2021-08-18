@@ -20,7 +20,7 @@ GameObject:
   m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5078915688378154873
 Transform:
@@ -195,6 +195,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5078915688378154873}
     m_Modifications:
+    - target: {fileID: 8798195816790077846, guid: 62ede3a86b2fcba43abe837a8958fd64,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8798195817033620805, guid: 62ede3a86b2fcba43abe837a8958fd64,
         type: 3}
       propertyPath: m_RootOrder
@@ -265,11 +270,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: healthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 8798195817033620806, guid: 62ede3a86b2fcba43abe837a8958fd64,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798195817325446164, guid: 62ede3a86b2fcba43abe837a8958fd64,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8798195818006367380, guid: 62ede3a86b2fcba43abe837a8958fd64,
         type: 3}
       propertyPath: plane
       value: 
       objectReference: {fileID: 1091504332462186908}
+    - target: {fileID: 8798195818006367382, guid: 62ede3a86b2fcba43abe837a8958fd64,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62ede3a86b2fcba43abe837a8958fd64, type: 3}
 --- !u!4 &8620691007407814201 stripped

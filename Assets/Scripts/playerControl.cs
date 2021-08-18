@@ -166,19 +166,19 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""37c54d9b-f27c-4531-ab7e-d25d2a550c2f"",
-                    ""path"": ""<Touchscreen>/press"",
+                    ""id"": ""93c7503d-8e1c-447e-a3ff-1688d3fdc5b3"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mobile Phone;Computer"",
-                    ""action"": ""Shoot"",
+                    ""groups"": """",
+                    ""action"": ""Change_ammo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""93c7503d-8e1c-447e-a3ff-1688d3fdc5b3"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""id"": ""97ba301f-8d59-41af-bbd2-6d900d1ddb2d"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -199,20 +199,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""073db9de-291b-477b-83f8-f4bc63720a02"",
-                    ""path"": ""<Touchscreen>/primaryTouch/position/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mobile Phone"",
-                    ""action"": ""Move_touch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""0c0b7c30-7403-405f-be51-9df72f661cd5"",
-                    ""path"": ""<Touchscreen>/primaryTouch/position/x"",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""path"": ""<Touchscreen>/primaryTouch/phase"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mobile Phone"",
                     ""action"": ""Move_touch_end"",
@@ -238,6 +227,17 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""speed_boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bead6ae7-1f71-4f9d-9fa3-eb60b979d124"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move_touch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }

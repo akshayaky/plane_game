@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5060505852350143, guid: 8be00397abaad584d81dad1a9fdd894e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 827262933752428011, guid: 8be00397abaad584d81dad1a9fdd894e,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -32,6 +36,11 @@ PrefabInstance:
       propertyPath: plane
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1983804270647386966, guid: 8be00397abaad584d81dad1a9fdd894e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1983804270647386967, guid: 8be00397abaad584d81dad1a9fdd894e,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -50,7 +59,12 @@ PrefabInstance:
     - target: {fileID: 1983804271418348658, guid: 8be00397abaad584d81dad1a9fdd894e,
         type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: Canvas Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983804271418348658, guid: 8be00397abaad584d81dad1a9fdd894e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1983804271418348670, guid: 8be00397abaad584d81dad1a9fdd894e,
         type: 3}

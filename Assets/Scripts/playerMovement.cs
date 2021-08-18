@@ -64,6 +64,7 @@ public class playerMovement : MonoBehaviour
             timeRemaining -= Time.deltaTime;
             if(timeRemaining <= 0)
             {
+                speedBoost = false;
                 var temp = m_SpriteRenderer.color; 
                 temp.a = 1f;
                 m_SpriteRenderer.color = temp;
