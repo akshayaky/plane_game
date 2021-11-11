@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class enemyFire : MonoBehaviour
 {
@@ -19,8 +17,12 @@ public class enemyFire : MonoBehaviour
  
     private Vector3 _center;
     private float _angle;
+
+    private AudioSource a_src;
+
     void Start()
     {
+        a_src = gameObject.GetComponent<AudioSource>();
         _center = building.transform.position;
     }
 
@@ -45,7 +47,7 @@ public class enemyFire : MonoBehaviour
     {
         // Debug.Log(firePoint.position);
         Instantiate(projectile, firePoint.position, firePoint.rotation);
-        // AudioManager.instance.PlaySoundClip(Sfx.rocket_hit);
+        AudioManager.instance.PlaySoundClip(Sfx.bullet_shoot, a_src);
     }
 
     void Update()
