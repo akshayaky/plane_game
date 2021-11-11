@@ -1,0 +1,123 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+// using  UnityEngine.InputSystem.OnScreen;
+using UnityEngine.InputSystem.EnhancedTouch;
+using Input = UnityEngine.InputSystem;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+public class InputManager : UnityEngine.MonoBehaviour
+{
+    public PlayerController playerControl;
+    // public OnScreenButton OnSButton;
+    playerMovement m_playerMovement;
+    shooting m_shooting;
+    void Awake()
+    {
+        #if UNITY_ANDROID
+            Debug.Log("Android");
+        #endif
+        EnhancedTouchSupport.Enable();
+        float move_touch = 0.0f;
+        m_playerMovement= gameObject.GetComponent<playerMovement>();
+        m_shooting = gameObject.GetComponent<shooting>();
+
+        playerControl = new PlayerController();
+        // OnSButton = new OnScreenButton();
+        // OnSButton.OnPointerUp.performed += ctx => Debug.Log("Pressed");
+        playerControl.fly.Move.performed  += ctx => PlayerMove(ctx.ReadValue<float>());
+        playerControl.fly.Move.canceled   += ctx => PlayerMove(ctx.ReadValue<float>());
+
+        // playerControl.fly.Move_touch_end.performed   += ctx => {
+        //                                                 // PlayerMove(ctx.ReadValue<Vector2>().x);
+        //                                                 move_touch = 2;
+        //                                                 if(ctx.ReadValue<float>() < Screen.width/2)
+        //                                                 {
+        //                                                     PlayerMove(- move_touch);
+        //                                                 }
+        //                                                 else
+        //                                                 {
+        //                                                     PlayerMove(move_touch);
+        //                                                 }
+        //                                                 // move_touch -= Time.deltaTime;
+        //                                                 Debug.Log("pressed");
+        //                                             } ; 
+        // playerControl.fly.Move_touch_end.canceled   += ctx => {
+        //                                                 // PlayerMove(ctx.ReadValue<Vector2>().x);
+                                                        
+        //                                                 PlayerMove(0.0f);
+        //                                                 Debug.Log("cancelled");
+        //                                             } ; 
+
+
+        playerControl.fly.Change_ammo.performed  += ctx => m_shooting.changeAmmo = true;
+        // playerControl.fly.Change_ammo_touch.performed  += ctx => m_shooting.changeAmmo = true;
+        
+        playerControl.fly.Shoot.performed += ctx => m_shooting.shoot = true;
+        playerControl.fly.Shoot.canceled  += ctx => m_shooting.shoot = false;
+
+        playerControl.fly.speed_boost.performed += ctx => m_playerMovement.speedBoost = true;
+        playerControl.fly.speed_boost.canceled  += ctx => m_playerMovement.speedBoost = false;
+    }
+
+    private void OnEnable()
+    {
+        playerControl.fly.Enable();
+        
+    }
+
+    private void OnDisable()
+    {
+        playerControl.fly.Disable();
+    }
+
+
+    void PlayerMove(float inputTilt)
+    {
+        m_playerMovement.tilt = inputTilt;
+    }
+
+    void Shoot(bool inputShoot)
+    {
+        m_shooting.shoot = inputShoot;
+    }
+
+#if UNITY_ANDROID
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (Touch.activeFingers.Count == 1)
+        {
+            Touch activeTouch = Touch.activeFingers[0].currentTouch;
+            // Debug.Log($"Phase: {activeTouch.phase} | Position: {activeTouch.startScreenPosition}");
+            float xPos = activeTouch.startScreenPosition.x;
+            
+            if(activeTouch.phase == Input.TouchPhase.Began)
+            {
+                
+                
+                if(xPos< UnityEngine.Screen.width/2)
+                {
+                    // Debug.Log("Left");
+                    PlayerMove(- 2.0f);
+                }
+                else
+                {
+                    // Debug.Log("Right");
+                    PlayerMove(2.0f);
+                }
+            }
+            else
+            {
+                Debug.Log(activeTouch.delta.y);
+                if(activeTouch.delta.y < 0)
+                {
+                    m_playerMovement.speedBoost = true;
+                }
+                // Debug.Log("Ended");
+                PlayerMove(0.0f);
+            }
+        }
+    }
+
+#endif
+}

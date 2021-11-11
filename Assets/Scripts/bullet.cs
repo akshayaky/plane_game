@@ -11,7 +11,6 @@ public class bullet : MonoBehaviour
     void Start()
     {
         rb.velocity = transform.up * speed;
-
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -22,6 +21,7 @@ public class bullet : MonoBehaviour
             {
                 col.gameObject.GetComponent<Entity>().Damage(PROJECTILE_DAMAGE);                
             }
+            // AudioManager.instance.PlaySoundClip(Sfx.rocket_hit);
                 
         // }
         // if(!col.gameObject.CompareTag("Finish"))

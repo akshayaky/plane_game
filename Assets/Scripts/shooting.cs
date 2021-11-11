@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class shooting : MonoBehaviour
 {
     public Transform firePoint;
@@ -13,19 +13,37 @@ public class shooting : MonoBehaviour
     public int index = 0;
 
     public bool shoot = false;
-    public bool changeAmmo = false; 
+    public int changeAmmo = 0; 
+    private AudioSource a_src;
+    void Start()
+    {
+        a_src = gameObject.GetComponent<AudioSource>();
+    }
+
     void Update()
     {
-        if(changeAmmo)
-        {
-            index = (index + 1 ) % projectiles.Count;
-            changeAmmo = false;
-        }
+        // switch (changeAmmo + index)
+        //     {
+        //         case (0):
+        //             break;
+        //         case (-1):
+        //             index = projectiles.Count - 1;
+        //             break;
+        //         default:
+        //             index = (index + changeAmmo) % projectiles.Count;
+        //             break;
+        //         changeAmmo = 0;
+        //     }
+        // if (changeAmmo != 0)
+        // {
+        //     ChangeAmmo(changeAmmo);
+        //     changeAmmo = 0;
+        // }
         nextFire += Time.deltaTime; 
         if( shoot && nextFire >= fireTime) 
         {
             nextFire = 0;
-            Shoot();
+            Shoot(index);
         }
 
 
@@ -37,10 +55,17 @@ public class shooting : MonoBehaviour
         //     Shoot();
         // }
     }
-
-    void Shoot() 
+    public void ChangeAmmo(int change = 0,int indexVal = -1)
+    {
+        index =  change == -1? projectiles.Count - 1:(index + Math.Abs(change)) % projectiles.Count;
+    }
+    void Shoot(int index) 
     {
         // Debug.Log(firePoint.position);
         Instantiate(projectiles[index], firePoint.position, firePoint.rotation);
+        if(index == 0)
+            AudioManager.instance.PlaySoundClip(Sfx.bullet_shoot, a_src);
+        else if(index == 1)
+            AudioManager.instance.PlaySoundClip(Sfx.rocket_shoot, a_src);
     }
 }

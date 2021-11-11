@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 // using  UnityEngine.InputSystem.OnScreen;
@@ -40,8 +41,6 @@ public class InputManager : UnityEngine.MonoBehaviour
                                                         {
                                                             PlayerMove(move_touch);
                                                         }
-                                                        // move_touch -= Time.deltaTime;
-                                                        Debug.Log("pressed");
                                                     } ; 
         // playerControl.fly.Move_touch.canceled   += ctx => {
         //                                                 // PlayerMove(ctx.ReadValue<Vector2>().x);
@@ -51,7 +50,7 @@ public class InputManager : UnityEngine.MonoBehaviour
         //                                             } ; 
 
 
-        playerControl.fly.Change_ammo.performed  += ctx => m_shooting.changeAmmo = true;
+        playerControl.fly.Change_ammo.performed  += ctx => m_shooting.ChangeAmmo((int)Math.Ceiling(ctx.ReadValue<float>()));
         // playerControl.fly.Change_ammo_touch.performed  += ctx => m_shooting.changeAmmo = true;
         
         playerControl.fly.Shoot.performed += ctx => m_shooting.shoot = true;
@@ -116,7 +115,7 @@ public class InputManager : UnityEngine.MonoBehaviour
                 {
                     if(touch.position.x > UnityEngine.Screen.width/2)
                     {
-                        m_shooting.changeAmmo = true;
+                        m_shooting.changeAmmo = 1;
                     }
                     else
                     {
@@ -134,12 +133,12 @@ public class InputManager : UnityEngine.MonoBehaviour
                 // Debug.Log("Ended");
                 PlayerMove(0.0f);
                 m_shooting.shoot = false;
-                m_shooting.changeAmmo = false;
+                m_shooting.changeAmmo = 0;
                 // Input.multiTouchEnabled = true;
 
             }
         }
     }
-    
+
 #endif
 }

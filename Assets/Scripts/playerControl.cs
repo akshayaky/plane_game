@@ -44,7 +44,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Change_ammo"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""456444ce-008f-409c-85ae-9f9db33eb036"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -62,14 +62,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""name"": ""Move_touch"",
                     ""type"": ""PassThrough"",
                     ""id"": ""44307cde-f86a-4350-b5ef-36a6f401f7ae"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Move_touch_end"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""66080343-9d59-473b-a724-128a9d31da37"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -187,6 +179,39 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": ""mouse_wheel"",
+                    ""id"": ""338c174a-e7c3-4e86-8a20-f6ded9be6b0f"",
+                    ""path"": ""1DAxis(whichSideWins=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change_ammo"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""77e4fd75-d42f-46c1-bbaa-c477aec0ffa6"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change_ammo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""c128e736-40fc-47b4-b175-d17b2c4f78a5"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change_ammo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""6c940854-0ff0-40fa-8eba-47185b96fa98"",
                     ""path"": ""<Touchscreen>/press"",
@@ -194,17 +219,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Computer;Mobile Phone"",
                     ""action"": ""Change_ammo_touch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0c0b7c30-7403-405f-be51-9df72f661cd5"",
-                    ""path"": ""<Touchscreen>/primaryTouch/phase"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mobile Phone"",
-                    ""action"": ""Move_touch_end"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -282,7 +296,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_fly_Change_ammo = m_fly.FindAction("Change_ammo", throwIfNotFound: true);
         m_fly_Change_ammo_touch = m_fly.FindAction("Change_ammo_touch", throwIfNotFound: true);
         m_fly_Move_touch = m_fly.FindAction("Move_touch", throwIfNotFound: true);
-        m_fly_Move_touch_end = m_fly.FindAction("Move_touch_end", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -338,7 +351,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private readonly InputAction m_fly_Change_ammo;
     private readonly InputAction m_fly_Change_ammo_touch;
     private readonly InputAction m_fly_Move_touch;
-    private readonly InputAction m_fly_Move_touch_end;
     public struct FlyActions
     {
         private @PlayerController m_Wrapper;
@@ -349,7 +361,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
         public InputAction @Change_ammo => m_Wrapper.m_fly_Change_ammo;
         public InputAction @Change_ammo_touch => m_Wrapper.m_fly_Change_ammo_touch;
         public InputAction @Move_touch => m_Wrapper.m_fly_Move_touch;
-        public InputAction @Move_touch_end => m_Wrapper.m_fly_Move_touch_end;
         public InputActionMap Get() { return m_Wrapper.m_fly; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -377,9 +388,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Move_touch.started -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch;
                 @Move_touch.performed -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch;
                 @Move_touch.canceled -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch;
-                @Move_touch_end.started -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch_end;
-                @Move_touch_end.performed -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch_end;
-                @Move_touch_end.canceled -= m_Wrapper.m_FlyActionsCallbackInterface.OnMove_touch_end;
             }
             m_Wrapper.m_FlyActionsCallbackInterface = instance;
             if (instance != null)
@@ -402,9 +410,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Move_touch.started += instance.OnMove_touch;
                 @Move_touch.performed += instance.OnMove_touch;
                 @Move_touch.canceled += instance.OnMove_touch;
-                @Move_touch_end.started += instance.OnMove_touch_end;
-                @Move_touch_end.performed += instance.OnMove_touch_end;
-                @Move_touch_end.canceled += instance.OnMove_touch_end;
             }
         }
     }
@@ -435,6 +440,5 @@ public class @PlayerController : IInputActionCollection, IDisposable
         void OnChange_ammo(InputAction.CallbackContext context);
         void OnChange_ammo_touch(InputAction.CallbackContext context);
         void OnMove_touch(InputAction.CallbackContext context);
-        void OnMove_touch_end(InputAction.CallbackContext context);
     }
 }

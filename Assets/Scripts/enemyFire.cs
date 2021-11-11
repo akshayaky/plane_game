@@ -45,6 +45,7 @@ public class enemyFire : MonoBehaviour
     {
         // Debug.Log(firePoint.position);
         Instantiate(projectile, firePoint.position, firePoint.rotation);
+        // AudioManager.instance.PlaySoundClip(Sfx.rocket_hit);
     }
 
     void Update()

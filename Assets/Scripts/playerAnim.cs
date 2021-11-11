@@ -10,6 +10,7 @@ public class playerAnim : MonoBehaviour
     
     private Entity plane;
     private float prevSpeed = -1f;
+    // public AudioSource a_src;
     void Start()
     {
         plane = gb.GetComponent<Entity>();
@@ -88,6 +89,7 @@ public class playerAnim : MonoBehaviour
         if(target != null && gameObject.name != "plane")
         {
             // Debug.Log(gameObject.name);
+            // AudioManager.instance.PlaySoundClip(Sfx.burning, a_src);
             plane.DamagePercent(0.3f);
         }
     }

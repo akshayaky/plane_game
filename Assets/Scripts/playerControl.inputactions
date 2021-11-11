@@ -31,7 +31,7 @@
                 },
                 {
                     "name": "Change_ammo",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "456444ce-008f-409c-85ae-9f9db33eb036",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -49,14 +49,6 @@
                     "name": "Move_touch",
                     "type": "PassThrough",
                     "id": "44307cde-f86a-4350-b5ef-36a6f401f7ae",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Move_touch_end",
-                    "type": "PassThrough",
-                    "id": "66080343-9d59-473b-a724-128a9d31da37",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -174,6 +166,39 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "mouse_wheel",
+                    "id": "338c174a-e7c3-4e86-8a20-f6ded9be6b0f",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Change_ammo",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "77e4fd75-d42f-46c1-bbaa-c477aec0ffa6",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Change_ammo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "c128e736-40fc-47b4-b175-d17b2c4f78a5",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Change_ammo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "6c940854-0ff0-40fa-8eba-47185b96fa98",
                     "path": "<Touchscreen>/press",
@@ -181,17 +206,6 @@
                     "processors": "",
                     "groups": "Computer;Mobile Phone",
                     "action": "Change_ammo_touch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0c0b7c30-7403-405f-be51-9df72f661cd5",
-                    "path": "<Touchscreen>/primaryTouch/phase",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mobile Phone",
-                    "action": "Move_touch_end",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
