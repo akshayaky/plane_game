@@ -13,11 +13,8 @@ public class shooting : MonoBehaviour
 
     public bool shoot = false;
     public int changeAmmo = 0; 
-    private AudioSource a_src;
-    void Start()
-    {
-        a_src = gameObject.GetComponent<AudioSource>();
-    }
+    public AudioSource a_src;
+    
 
     void Update()
     {
