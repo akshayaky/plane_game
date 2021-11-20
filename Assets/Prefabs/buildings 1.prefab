@@ -288,12 +288,12 @@ PrefabInstance:
     - target: {fileID: 8798195817325446163, guid: 62ede3a86b2fcba43abe837a8958fd64,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.94
+      value: 1.772
       objectReference: {fileID: 0}
     - target: {fileID: 8798195817325446163, guid: 62ede3a86b2fcba43abe837a8958fd64,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 8798195817325446164, guid: 62ede3a86b2fcba43abe837a8958fd64,
         type: 3}
@@ -305,6 +305,21 @@ PrefabInstance:
       propertyPath: plane
       value: 
       objectReference: {fileID: 1091504332462186908}
+    - target: {fileID: 8798195818006367381, guid: 62ede3a86b2fcba43abe837a8958fd64,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798195818006367381, guid: 62ede3a86b2fcba43abe837a8958fd64,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798195818006367381, guid: 62ede3a86b2fcba43abe837a8958fd64,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 8798195818006367382, guid: 62ede3a86b2fcba43abe837a8958fd64,
         type: 3}
       propertyPath: m_StaticEditorFlags

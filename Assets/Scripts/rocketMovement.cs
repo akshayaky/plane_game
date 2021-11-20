@@ -31,7 +31,7 @@ public class rocketMovement : MonoBehaviour
             cirCol.enabled = true;
             rb.velocity = new Vector3(0,0,0);
             AudioManager.instance.PlaySoundClip(Sfx.rocket_hit,gameObject.GetComponent<AudioSource>());
-            Destroy(back);
+            // Destroy(back);
         }
     }
 }

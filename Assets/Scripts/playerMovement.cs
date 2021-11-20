@@ -12,6 +12,7 @@ public class playerMovement : MonoBehaviour
     private float speedBoostTime = 1f;
     private float timeRemaining;
     private  SpriteRenderer m_SpriteRenderer;
+    public AudioSource a_src;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class playerMovement : MonoBehaviour
     {
         if(speedBoost)
         {
+            a_src.pitch = 3.0f;
             var temp = m_SpriteRenderer.color; 
             temp.a = 0.7f;
             m_SpriteRenderer.color = temp;
@@ -50,7 +52,14 @@ public class playerMovement : MonoBehaviour
         if(rb.velocity.magnitude > speedLimit)
         {
             rb.velocity = rb.velocity.normalized * speedLimit;
+            
             // rb.AddForce(force.normalized);
+        }
+        a_src.pitch = rb.velocity.magnitude/speedLimit;
+
+        if(a_src.pitch < 0.3f)
+        {
+            a_src.pitch = 0.3f;
         }
         // Debug.Log(rb.velocity.magnitude);
     }
@@ -62,6 +71,7 @@ public class playerMovement : MonoBehaviour
             timeRemaining -= Time.deltaTime;
             if(timeRemaining <= 0)
             {
+                a_src.pitch = 1.0f;
                 speedBoost = false;
                 var temp = m_SpriteRenderer.color; 
                 temp.a = 1f;
